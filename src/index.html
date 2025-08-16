@@ -18,8 +18,35 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <main id="main-content" class="flex flex-1 items-center justify-center opacity-0">
-      <h1>Hello World!</h1>
+    <main id="main-content" class="opacity-0 bg-blue-400 min-h-screen">
+      <div class="app-title">
+        <h2 class="w-full text-center">MenuCraft</h2>
+      </div>
+      <form class="py-10 flex flex-col mx-5">
+        <h3 class="text-center">Create Your Menu</h3>
+        <div class="form-section flex flex-col my-3">
+          <h4>Restauraunt Name</h4>
+          <label for="restauraunt-name" hidden>Restauraunt Name</label>
+          <input type="text" name="restauraunt-name" id="restauraunt-name" />
+        </div>
+        <div class="form-section flex flex-col my-3">
+          <h4>Menu Sections</h4>
+          <label for="menu-sections" hidden>Menu Sections</label>
+          <input type="text" name="menu-sections" id="menu-sections" placeholder="Section Name" />
+          <button class="p-1 bg-green-600 my-2">Add Section</button>
+        </div>
+        <div class="form-section flex flex-col my-3">
+          <h4>Menu Items</h4>
+          <label for="menu-item" hidden>Menu Item</label>
+          <input type="text" name="menu-item" id="menu-item" placeholder="Item Name" />
+          <label for="item-description" hidden>Item Description</label>
+          <textarea name="item-description" id="item-description" placeholder="Item Description"></textarea>
+          <label for="price" hidden>Price</label>
+          <input type="text" name="price" id="price" placeholder="Price" />
+          <button class="p-1 bg-green-600 my-2">Add Item</button>
+        </div>
+        <button class="p-1 bg-green-600 my-2" type="submit">Generate Menu</button>
+      </form>
     </main>
     <script src="./app.js"></script>
   </body>

@@ -20,5 +20,6 @@ const initSplash = (timeout = 3000) => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  initSplash(3000);
+  // initSplash(3000);
+  hideSplash();
 });
