@@ -3,10 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/output.css" />
     <title>MenuCraft</title>
   </head>
   <body>
-    <h1 class="text-9xl">hello world</h1>
+    <!-- SPLASH SCREEN -->
+    <div id="splash" class="wrapper fixed h-screen w-full flex flex-col justify-center items-center align-middle bg-gray-800 text-white">
+      <h1 class="mb-3 text-4xl font-semibold">MenuCraft</h1>
+      <p class="mb-6 text-xl">Create your mobile menu in minutes.</p>
+      <p class="opacity-60 blink">Loading...</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="flex flex-1 items-center justify-center opacity-0">
+      <h1>Hello World!</h1>
+    </main>
+    <script src="./app.js"></script>
   </body>
 </html>
+
+<!-- START APP
+
+// Step 1: Load UI
+SHOW welcome screen: "Create your mobile menu in minutes."
+
+// Step 2: Menu creation form
+DISPLAY form with:
+    - Cafe name
+    - Menu sections (starters, mains, drinks)
+    - For each item: name, description, price
+BUTTON: "Generate Menu"
+
+// Step 3: On button click
+CAPTURE form input
+SAVE menu data to JSON object (in localStorage for MVP)
+
+// Step 4: Render mobile-friendly menu
+CREATE new HTML page or modal
+DISPLAY cafe name + menu items grouped by section
+
+// Step 5: Generate QR code (bonus)
+PASS menu URL to QR code library
+DISPLAY QR code for downloading/printing
+
+// Step 6: Optional premium features
+(Phase 2)
+    - User accounts (login)
+    - Editing saved menus
+    - Multiple menu versions
+    - Analytics on menu views
+END -->
