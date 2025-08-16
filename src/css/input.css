@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: "Montserrat", "ui-sans-serif", "system-ui", "sans-serif";
+  }
+}
+
+/* SPLASH */
+@keyframes blink {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.blink {
+  animation: blink 1.3s infinite;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
