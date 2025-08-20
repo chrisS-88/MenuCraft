@@ -1,3 +1,4 @@
+// SPLASH SCREEN
 const showSplash = () => {
   const splashScreen = document.getElementById("splash");
   splashScreen.style.display = "flex-1";
@@ -11,7 +12,7 @@ const hideSplash = () => {
   setTimeout(() => {
     splashScreen.style.display = "none";
     document.getElementById("main-content").style.opacity = "1";
-  }, 1000);
+  }, 300);
 };
 
 const initSplash = (timeout = 3000) => {
@@ -19,7 +20,13 @@ const initSplash = (timeout = 3000) => {
   setTimeout(hideSplash, timeout);
 };
 
+// CAPTURE FORM INPUT
+
+const menuData = {
+  restaurauntName: "",
+  sections: [],
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  // initSplash(3000);
-  hideSplash();
+  initSplash(0);
 });
