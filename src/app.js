@@ -20,6 +20,43 @@ const initSplash = (timeout = 3000) => {
   setTimeout(hideSplash, timeout);
 };
 
+// ADD SECTIONS
+// ADD SECTION
+
+const sectionsDiv = document.getElementById("sections");
+const addSectionBtn = document.getElementById("add-section-btn");
+
+addSectionBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  const section = document.createElement("div");
+  section.classList.add("section");
+  section.innerHTML = `
+    <input type="text" placeholder="Section Name">
+    <div class="items"></div>
+    <button type="button" class="add-item-btn">+ Add Item</button>
+  `;
+  sectionsDiv.appendChild(section);
+
+  // ADD ITEM
+
+  const addItemBtn = section.querySelector(".add-item-btn");
+
+  addItemBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const itemsDiv = section.querySelector(".items");
+    const itemRow = document.createElement("div");
+
+    itemRow.innerHTML = `
+      <input type="text" placeholder="Item Name">
+      <input type="text" placeholder="Price">
+      <textarea type="text" placeholder="Description"></textarea>
+    `;
+    itemsDiv.appendChild(itemRow);
+  });
+});
+
 // CAPTURE FORM INPUT
 
 const menuData = {

@@ -26,4 +26,9 @@
 form input {
   background: #fafafa;
   margin: 1rem 0;
+  padding: 0.25rem 0;
+}
+
+form textarea {
+  background: #fafafa;
 }

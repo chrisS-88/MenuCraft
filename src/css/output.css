@@ -170,8 +170,8 @@
   .fixed {
     position: fixed;
   }
-  .mx-5 {
-    margin-inline: calc(var(--spacing) * 5);
+  .mx-10 {
+    margin-inline: calc(var(--spacing) * 10);
   }
   .my-2 {
     margin-block: calc(var(--spacing) * 2);
@@ -272,6 +272,10 @@
 form input {
   background: #fafafa;
   margin: 1rem 0;
+  padding: 0.25rem 0;
+}
+form textarea {
+  background: #fafafa;
 }
 @property --tw-font-weight {
   syntax: "*";
