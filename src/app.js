@@ -20,7 +20,6 @@ const initSplash = (timeout = 3000) => {
   setTimeout(hideSplash, timeout);
 };
 
-// ADD SECTIONS
 // ADD SECTION
 
 const sectionsDiv = document.getElementById("sections");
@@ -59,10 +58,23 @@ addSectionBtn.addEventListener("click", (e) => {
 
 // CAPTURE FORM INPUT
 
-const menuData = {
-  restaurauntName: "",
-  sections: [],
+const collectMenuData = () => {
+  const restaurantName = document.getElementById("restauraunt-name").value;
+  const sectionDivs = document.querySelectorAll("#sections .section");
+
+  let restaurant = { name: restaurantName, sections: [] };
+  sectionDivs.forEach((section) => {
+    const sectionName = section.querySelector("input").value;
+    const items = [];
+    console.log(sectionName);
+  });
 };
+
+const generatMenuBtn = document.getElementById("generate-menu");
+generatMenuBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  collectMenuData();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   initSplash(0);
