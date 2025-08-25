@@ -22,20 +22,21 @@
       <div class="app-title">
         <h2 class="w-full text-center">MenuCraft</h2>
       </div>
-      <form class="py-10 flex flex-col mx-5">
+      <form class="py-10 flex flex-col mx-10">
         <h3 class="text-center">Create Your Menu</h3>
         <div class="form-section flex flex-col my-3">
           <h4>Restauraunt Name</h4>
           <label for="restauraunt-name" hidden>Restauraunt Name</label>
           <input type="text" name="restauraunt-name" id="restauraunt-name" />
         </div>
-        <div class="form-section flex flex-col my-3">
+        <button type="button" class="p-1 bg-green-600 my-2" id="add-section-btn">Add Section</button>
+        <div id="sections"></div>
+        <!-- <div class="form-section flex flex-col my-3">
           <h4>Menu Sections</h4>
           <label for="menu-sections" hidden>Menu Sections</label>
           <input type="text" name="menu-sections" id="menu-sections" placeholder="Section Name" />
-          <button class="p-1 bg-green-600 my-2">Add Section</button>
-        </div>
-        <div class="form-section flex flex-col my-3">
+        </div> -->
+        <!-- <div class="form-section flex flex-col my-3">
           <h4>Menu Items</h4>
           <label for="menu-item" hidden>Menu Item</label>
           <input type="text" name="menu-item" id="menu-item" placeholder="Item Name" />
@@ -44,12 +45,10 @@
           <label for="price" hidden>Price</label>
           <input type="text" name="price" id="price" placeholder="Price" />
           <button class="p-1 bg-green-600 my-2">Add Item</button>
-        </div>
-        <button class="p-1 bg-green-600 my-2" type="submit">Generate Menu</button>
+        </div> -->
+
+        <!-- <button class="p-1 bg-green-600 my-2" type="submit">Generate Menu</button> -->
       </form>
-      <!-- TEMP -->
-      <h2>current data output:</h2>
-      <pre id="output"></pre>
     </main>
     <script src="./app.js"></script>
   </body>
