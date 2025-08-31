@@ -20,7 +20,6 @@ const initSplash = (timeout = 3000) => {
   setTimeout(hideSplash, timeout);
 };
 
-// ADD SECTIONS
 // ADD SECTION
 
 const sectionsDiv = document.getElementById("sections");
@@ -59,11 +58,47 @@ addSectionBtn.addEventListener("click", (e) => {
 
 // CAPTURE FORM INPUT
 
-const menuData = {
-  restaurauntName: "",
-  sections: [],
+const collectMenuData = () => {
+  // grab restaurant name
+  const restaurantName = document.getElementById("restauraunt-name").value;
+
+  // grab all sections
+  const sectionDivs = document.querySelectorAll("#sections .section");
+  // start object
+  let restaurant = { name: restaurantName || "Untitled Restaurant".trim(), sections: [] };
+  // loop through sections
+  sectionDivs.forEach((section) => {
+    const sectionNameInput = section.querySelector("input");
+    const sectionName = sectionNameInput?.value || "Untitled Section".trim();
+
+    const items = [];
+    // loop items inside section
+    const itemRow = section.querySelectorAll(".items div");
+    itemRow.forEach((row) => {
+      const inputs = row.querySelectorAll("input");
+      const description = row.querySelectorAll("textarea");
+      const name = inputs[0].value;
+      const price = inputs[1].value;
+      const desc = description[0].value;
+
+      items.push({ name, price, desc });
+    });
+
+    restaurant.sections.push({ name: sectionName, items });
+  });
+  // TEMP
+  const objOutput = document.querySelector(".object-output");
+  const node = document.createTextNode(JSON.stringify(restaurant, null, 4));
+
+  objOutput.appendChild(node);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   initSplash(0);
+
+  const generatMenuBtn = document.getElementById("generate-menu");
+  generatMenuBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    collectMenuData();
+  });
 });
