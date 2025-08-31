@@ -18,7 +18,7 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <main id="main-content" class="opacity-0 bg-blue-400 min-h-screen">
+    <main id="main-content" class="opacity-0 bg-blue-400 min-h-screen pb-40">
       <div class="app-title">
         <h2 class="w-full text-center">MenuCraft</h2>
       </div>
@@ -30,10 +30,13 @@
           <input type="text" name="restauraunt-name" id="restauraunt-name" />
         </div>
         <div id="sections"></div>
-        <button type="button" class="p-1 bg-green-600 my-2" id="add-section-btn">Add Section</button>
-
-        <button class="p-1 bg-green-600 my-2" type="submit" id="generate-menu">Generate Menu</button>
+        <div class="btns-fixed fixed bottom-0 left-0 py-6 px-10 bg-blue-400 w-full flex flex-col gap-2 justify-start">
+          <button type="button" class="px-10 py-2 rounded-md bg-blue-600" id="add-section-btn">Add Section</button>
+          <button class="px-10 flex-1 rounded-md py-2 bg-sky-700" type="submit" id="generate-menu">Generate Menu</button>
+        </div>
       </form>
+      <!-- TEMP -->
+      <pre class="object-output mx-5 bg-black text-green-500"></pre>
     </main>
     <script src="./app.js"></script>
   </body>
