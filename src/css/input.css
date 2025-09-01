@@ -23,12 +23,7 @@
 }
 
 /* MAIN FORM */
-form input {
-  background: #fafafa;
-  margin: 1rem 0;
-  padding: 0.25rem 0;
-}
 
-form textarea {
-  background: #fafafa;
+.input-style {
+  @apply px-4 py-2 my-2 bg-white border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
