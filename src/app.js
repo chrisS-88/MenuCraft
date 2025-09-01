@@ -21,7 +21,6 @@ const initSplash = (timeout = 3000) => {
 };
 
 // ADD SECTION
-
 const sectionsDiv = document.getElementById("sections");
 const addSectionBtn = document.getElementById("add-section-btn");
 
@@ -31,7 +30,7 @@ addSectionBtn.addEventListener("click", (e) => {
   const section = document.createElement("div");
   section.classList.add("section");
   section.innerHTML = `
-    <input type="text" placeholder="Section Name">
+    <input type="text" placeholder="Section Name" class="input-style">
     <div class="items"></div>
     <button type="button" class="add-item-btn">+ Add Item</button>
   `;
@@ -48,9 +47,9 @@ addSectionBtn.addEventListener("click", (e) => {
     const itemRow = document.createElement("div");
 
     itemRow.innerHTML = `
-      <input type="text" placeholder="Item Name">
-      <input type="text" placeholder="Price">
-      <textarea type="text" placeholder="Description"></textarea>
+      <input type="text" placeholder="Item Name" class="input-style">
+      <input type="text" placeholder="Price" class="input-style">
+      <textarea type="text" placeholder="Description" class="input-style"></textarea>
     `;
     itemsDiv.appendChild(itemRow);
   });
@@ -60,7 +59,7 @@ addSectionBtn.addEventListener("click", (e) => {
 
 const collectMenuData = () => {
   // grab restaurant name
-  const restaurantName = document.getElementById("restauraunt-name").value;
+  const restaurantName = (document.getElementById("restaurant-name")?.value || "").trim();
 
   // grab all sections
   const sectionDivs = document.querySelectorAll("#sections .section");
@@ -77,14 +76,18 @@ const collectMenuData = () => {
     itemRow.forEach((row) => {
       const inputs = row.querySelectorAll("input");
       const description = row.querySelectorAll("textarea");
-      const name = inputs[0].value;
-      const price = inputs[1].value;
-      const desc = description[0].value;
+      const name = (inputs[0]?.value || "").trim();
+      const price = Number(inputs[1]?.value || "");
+      const desc = (description[0]?.value || "").trim();
 
-      items.push({ name, price, desc });
+      if (name || price || desc) {
+        items.push({ name, price, desc });
+      }
     });
 
-    restaurant.sections.push({ name: sectionName, items });
+    if (sectionName || items.length) {
+      restaurant.sections.push({ name: sectionName, items });
+    }
   });
   // TEMP
   const objOutput = document.querySelector(".object-output");
