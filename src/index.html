@@ -18,25 +18,28 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <main id="main-content" class="opacity-0 bg-blue-400 min-h-screen pb-40">
-      <div class="app-title">
-        <h2 class="w-full text-center">MenuCraft</h2>
-      </div>
-      <form class="py-10 flex flex-col mx-10">
-        <h3 class="text-center">Create Your Menu</h3>
-        <div class="form-section flex flex-col my-3">
-          <h4>Restauraunt Name</h4>
-          <label for="restauraunt-name" hidden>Restauraunt Name</label>
-          <input type="text" name="restaurant-name" id="restaurant-name" class="input-style" />
-        </div>
-        <div id="sections"></div>
-        <!-- <div id="sections">
-          <input type="text" placeholder="Section Name" />
-          <div class="items"></div>
-          <button type="button" class="add-item-btn">+ Add Item</button>
-        </div> -->
-        <div class="btns-fixed fixed bottom-0 left-0 py-6 px-10 bg-blue-400 w-full flex flex-col gap-2 justify-start">
+    <main id="main-content" class="opacity-0 p-6 bg-blue-400 min-h-screen pb-40">
+      <header class="space-y-3">
+        <h2 class="w-full text-center text-3xl font-semibold">MenuCraft</h2>
+        <p class="text-center">Create sections and items, then generate a clean mobile friendly menu.</p>
+      </header>
+      <form class="pt-10">
+        <!-- RESTAURANT NAME INPUT -->
+        <h3 class="font-medium mb-1">Restauraunt Name</h3>
+        <label for="restauraunt-name" hidden>Restauraunt Name</label>
+        <input type="text" name="restaurant-name" id="restaurant-name" placeholder="eg. The MenuCraft Cafe" class="input-style w-full" />
+
+        <!-- DYNAMICALLY CREATED SECTIONS -->
+        <div>
+          <div class="py-3">
+            <h3 class="font-medium hidden title-appear">Sections</h3>
+          </div>
+          <div id="sections"></div>
           <button type="button" class="px-10 py-2 rounded-md bg-blue-600" id="add-section-btn">Add Section</button>
+        </div>
+
+        <div class="btns-fixed fixed bottom-0 left-0 py-6 px-10 bg-blue-400 w-full flex flex-col gap-2 justify-start">
+          <!-- <button type="button" class="px-10 py-2 rounded-md bg-blue-600" id="add-section-btn">Add Section</button> -->
           <button class="px-10 flex-1 rounded-md py-2 bg-sky-700" type="submit" id="generate-menu">Generate Menu</button>
         </div>
       </form>

@@ -23,16 +23,29 @@ const initSplash = (timeout = 3000) => {
 // ADD SECTION
 const sectionsDiv = document.getElementById("sections");
 const addSectionBtn = document.getElementById("add-section-btn");
+const sectionH3 = document.querySelector(".title-appear");
 
 addSectionBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const section = document.createElement("div");
   section.classList.add("section");
+  sectionH3.classList.remove("hidden");
   section.innerHTML = `
-    <input type="text" placeholder="Section Name" class="input-style">
-    <div class="items"></div>
-    <button type="button" class="add-item-btn">+ Add Item</button>
+  <div class="bg-blue-500 rounded-lg p-3 mb-3">
+    <input type="text" placeholder="Section Name" class="input-style w-2/3">
+    <div class="w-full bg-blue-300 h-px my-2"></div>
+    
+      <div class="item">
+        <div class="name-price-row">
+          <input type="text" placeholder="Item Name" class="input-style name w-2/3">
+          <input type="text" placeholder="Price" class="input-style price ">
+        </div>
+          <textarea placeholder="Description" class="input-style desc"></textarea>
+      </div>
+      <button type="button" class="add-item-btn">+ Add Item</button>
+    </div>
+  </div>
   `;
   sectionsDiv.appendChild(section);
 
@@ -43,13 +56,17 @@ addSectionBtn.addEventListener("click", (e) => {
   addItemBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const itemsDiv = section.querySelector(".items");
+    const itemsDiv = section.querySelector(".item");
     const itemRow = document.createElement("div");
 
     itemRow.innerHTML = `
-      <input type="text" placeholder="Item Name" class="input-style">
-      <input type="text" placeholder="Price" class="input-style">
-      <textarea type="text" placeholder="Description" class="input-style"></textarea>
+      <div class="item">
+        <div class="name-price-row">
+          <input type="text" placeholder="Item Name" class="input-style name w-2/3">
+          <input type="text" placeholder="Price" class="input-style price ">
+        </div>
+          <textarea placeholder="Description" class="input-style desc"></textarea>
+      </div>
     `;
     itemsDiv.appendChild(itemRow);
   });
@@ -72,13 +89,18 @@ const collectMenuData = () => {
 
     const items = [];
     // loop items inside section
-    const itemRow = section.querySelectorAll(".items div");
+    const itemRow = section.querySelectorAll(".item");
     itemRow.forEach((row) => {
-      const inputs = row.querySelectorAll("input");
-      const description = row.querySelectorAll("textarea");
-      const name = (inputs[0]?.value || "").trim();
-      const price = Number(inputs[1]?.value || "");
-      const desc = (description[0]?.value || "").trim();
+      const namePriceRow = row.querySelector(".name-price-row");
+      const name = namePriceRow?.querySelector(".name").value.trim() || "";
+      const price = parseFloat(namePriceRow?.querySelector(".price")?.value) || 0;
+      const desc = row.querySelector(".desc").value.trim() || "";
+
+      // const description = row.querySelector(".item textarea");
+
+      // const name = (namePriceRow[0]?.value || "").trim();
+      // const price = parseFloat(namePriceRow[1]?.value || "");
+      // const desc = (description[0]?.value || "").trim();
 
       if (name || price || desc) {
         items.push({ name, price, desc });
