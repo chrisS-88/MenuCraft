@@ -32,16 +32,16 @@ addSectionBtn.addEventListener("click", (e) => {
   section.classList.add("section");
   sectionH3.classList.remove("hidden");
   section.innerHTML = `
-  <div class="bg-blue-500 rounded-lg p-3 mb-3">
-    <input type="text" placeholder="Section Name" class="input-style w-2/3">
-    <div class="w-full bg-blue-300 h-px my-2"></div>
+  <div class="bg-blue-500 rounded-lg p-3 mb-5">
+    <input type="text" placeholder="Section Name" class="input-style w-2/3 mb-8">
     
-      <div class="item">
-        <div class="name-price-row">
-          <input type="text" placeholder="Item Name" class="input-style name w-2/3">
-          <input type="text" placeholder="Price" class="input-style price ">
+      <div class="item bg-blue-100/20 py-2 px-5 rounded-md mb-2">
+        <span class="item-count font-normal">Item 1</span>
+        <div class="name-price-row flex gap-2 align-middle">
+          <input type="text" placeholder="Item Name" class="input-style name flex-auto">
+          <input type="text" placeholder="Price" class="input-style price w-1/5  ">
         </div>
-          <textarea placeholder="Description" class="input-style desc"></textarea>
+          <textarea placeholder="Description(optional)" class="input-style desc w-2/3"></textarea>
       </div>
       <button type="button" class="add-item-btn">+ Add Item</button>
     </div>
@@ -52,20 +52,25 @@ addSectionBtn.addEventListener("click", (e) => {
   // ADD ITEM
 
   const addItemBtn = section.querySelector(".add-item-btn");
-
+  // ASSIGN COUNT FOR ITEM COUNT
+  let count = 1;
   addItemBtn.addEventListener("click", (e) => {
     e.preventDefault();
 
     const itemsDiv = section.querySelector(".item");
     const itemRow = document.createElement("div");
 
+    // INCREMENT THE ITEM COUNT
+    count++;
+
     itemRow.innerHTML = `
       <div class="item">
-        <div class="name-price-row">
-          <input type="text" placeholder="Item Name" class="input-style name w-2/3">
-          <input type="text" placeholder="Price" class="input-style price ">
+        <span class=" font-normal">Item ${count}</span>
+        <div class="name-price-row flex gap-2">
+          <input type="text" placeholder="Item Name" class="input-style name flex-auto">
+          <input type="text" placeholder="Price" class="input-style price w-1/5  ">
         </div>
-          <textarea placeholder="Description" class="input-style desc"></textarea>
+          <textarea placeholder="Description(optional)" class="input-style desc w-2/3"></textarea>
       </div>
     `;
     itemsDiv.appendChild(itemRow);
@@ -95,12 +100,6 @@ const collectMenuData = () => {
       const name = namePriceRow?.querySelector(".name").value.trim() || "";
       const price = parseFloat(namePriceRow?.querySelector(".price")?.value) || 0;
       const desc = row.querySelector(".desc").value.trim() || "";
-
-      // const description = row.querySelector(".item textarea");
-
-      // const name = (namePriceRow[0]?.value || "").trim();
-      // const price = parseFloat(namePriceRow[1]?.value || "");
-      // const desc = (description[0]?.value || "").trim();
 
       if (name || price || desc) {
         items.push({ name, price, desc });

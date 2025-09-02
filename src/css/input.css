@@ -27,3 +27,7 @@
 .input-style {
   @apply px-2 py-2 my-2 bg-white border rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
+
+button {
+  @apply px-10 py-2 rounded-md bg-blue-600;
+}
