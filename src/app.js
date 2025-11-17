@@ -32,18 +32,21 @@ addSectionBtn.addEventListener("click", (e) => {
   section.classList.add("section");
   sectionH3.classList.remove("hidden");
   section.innerHTML = `
-  <div class="bg-blue-500 rounded-lg p-3 mb-5">
+  <div class="bg-slate-300 rounded-lg p-3 mb-5">
     <input type="text" placeholder="Section Name" class="input-style w-2/3 mb-8">
     
-      <div class="item bg-blue-100/20 py-2 px-5 rounded-md mb-2">
-        <span class="item-count font-normal">Item 1</span>
+      <div class="item bg-slate-200 py-2 px-5 rounded-md my-4">
+        <div class="flex justify-between items-center mb-5 pt-2">
+          <span class="font-medium tracking-wide">Item 1</span>
+          <button class="py-1 px-6 rounded-md bg-red-400 ">x</button>
+        </div>
         <div class="name-price-row flex gap-2 align-middle">
           <input type="text" placeholder="Item Name" class="input-style name flex-auto">
           <input type="text" placeholder="Price" class="input-style price w-1/5  ">
         </div>
-          <textarea placeholder="Description(optional)" class="input-style desc w-2/3"></textarea>
+          <textarea placeholder="Description(optional)" class="input-style desc w-full"></textarea>
       </div>
-      <button type="button" class="add-item-btn">+ Add Item</button>
+      <button type="button" class="add-item-btn px-4 py-2 rounded-md  bg-sky-400 hover:bg-sky-500">+ Add Item</button>
     </div>
   </div>
   `;
@@ -65,17 +68,31 @@ addSectionBtn.addEventListener("click", (e) => {
 
     itemRow.innerHTML = `
       <div class="item">
-        <span class=" font-normal">Item ${count}</span>
+        <div class="flex justify-between items-center mt-3 mb-5 border-t-1 pt-4">
+          <span class="font-medium tracking-wide">Item ${count}</span>
+          <button class="delete-item-btn py-1 px-6 rounded-md bg-red-400 ">x</button>
+        </div>
+        
         <div class="name-price-row flex gap-2">
           <input type="text" placeholder="Item Name" class="input-style name flex-auto">
           <input type="text" placeholder="Price" class="input-style price w-1/5  ">
         </div>
-          <textarea placeholder="Description(optional)" class="input-style desc w-2/3"></textarea>
+          <textarea placeholder="Description(optional)" class="input-style desc w-full"></textarea>
       </div>
     `;
     itemsDiv.appendChild(itemRow);
+
+    const deleteBtn = itemRow.querySelector(".delete-item-btn");
+    deleteBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      itemRow.remove();
+    });
   });
 });
+
+// DELETE ITEMS
+
+const removeItem = (e) => {};
 
 // CAPTURE FORM INPUT
 
@@ -110,11 +127,17 @@ const collectMenuData = () => {
       restaurant.sections.push({ name: sectionName, items });
     }
   });
-  // TEMP
+
+  // SAVE OBJECT IN LOCAL
+
+  localStorage.setItem("menu", JSON.stringify(restaurant));
+
+  // TEMP-----
   const objOutput = document.querySelector(".object-output");
   const node = document.createTextNode(JSON.stringify(restaurant, null, 4));
 
   objOutput.appendChild(node);
+  // -----TEMP
 };
 
 document.addEventListener("DOMContentLoaded", () => {
