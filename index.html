@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/css/output.css" />
+    <title>MenuCraft</title>
+  </head>
+  <body>
+    <!-- SPLASH SCREEN -->
+    <div id="splash" class="wrapper fixed h-screen w-full flex flex-col justify-center items-center align-middle bg-slate-800 text-white">
+      <h1 class="mb-3 text-4xl font-semibold">MenuCraft</h1>
+      <p class="mb-6 text-xl">Create your mobile menu in minutes.</p>
+      <p class="opacity-60 blink">Loading...</p>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content" class="opacity-0 py-6 px-4 bg-slate-50 text-slate-800 min-h-screen pb-40 tracking-wide">
+      <header class="space-y-3 w-72 mx-auto">
+        <h2 class="w-full text-center text-3xl font-semibold tracking-widest">MenuCraft</h2>
+        <p class="text-center text-slate-500">Create sections and items, then generate a clean mobile friendly menu.</p>
+      </header>
+      <form class="pt-10">
+        <!-- RESTAURANT NAME INPUT -->
+        <h3 class="font-medium mb-1">Restauraunt Name</h3>
+        <label for="restauraunt-name" hidden>Restauraunt Name</label>
+        <input type="text" name="restaurant-name" id="restaurant-name" placeholder="eg. The MenuCraft Cafe" class="input-style w-full" />
+
+        <!-- DYNAMICALLY CREATED SECTIONS -->
+        <div>
+          <div class="py-3">
+            <h3 class="font-medium hidden title-appear">Sections</h3>
+          </div>
+          <div id="sections"></div>
+          <div class="flex justify-end">
+            <button class="px-4 py-2 rounded-md bg-sky-400 hover:bg-sky-500" type="button" id="add-section-btn">Add Section</button>
+          </div>
+        </div>
+
+        <div class="btns-fixed fixed bottom-2 left-2 right-2 py-4 px-10 rounded-md bg-slate-400 flex flex-col gap-2 justify-start">
+          <!-- <button type="button" class="px-10 py-2 rounded-md bg-blue-600" id="add-section-btn">Add Section</button> -->
+          <button class="px-10 flex-1 rounded-md py-2 bg-amber-400 hover:bg-amber-500" type="submit" id="generate-menu">
+            Generate Menu
+          </button>
+        </div>
+      </form>
+      <!-- TEMP -->
+      <pre class="object-output mx-5 bg-black text-green-500"></pre>
+    </main>
+    <script src="/src/app.js"></script>
+  </body>
+</html>
+
+<!-- START APP
+
+// Step 1: Load UI
+SHOW welcome screen: "Create your mobile menu in minutes."
+
+// Step 2: Menu creation form
+DISPLAY form with:
+    - Cafe name
+    - Menu sections (starters, mains, drinks)
+    - For each item: name, description, price
+BUTTON: "Generate Menu"
+
+// Step 3: On button click
+CAPTURE form input
+SAVE menu data to JSON object (in localStorage for MVP)
+
+// Step 4: Render mobile-friendly menu
+CREATE new HTML page or modal
+DISPLAY cafe name + menu items grouped by section
+
+// Step 5: Generate QR code (bonus)
+PASS menu URL to QR code library
+DISPLAY QR code for downloading/printing
+
+// Step 6: Optional premium features
+(Phase 2)
+    - User accounts (login)
+    - Editing saved menus
+    - Multiple menu versions
+    - Analytics on menu views
+END -->
